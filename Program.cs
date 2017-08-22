@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DictionaryPractice
 {
@@ -6,10 +8,30 @@ namespace DictionaryPractice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter a Name: ");
-            var name = Console.ReadLine();
-            Console.WriteLine($"Please enter the phone number associated with {name}:");
-            var phoneNumber = Console.ReadLine();
+            //Part 1 (Inserting Data until Blank Name entered)
+            var myDict = new Dictionary<string, int>();
+            var name = "Placeholder";
+            while (name != string.Empty)
+            {
+                Console.WriteLine("Please Enter a Name: ");
+                name = Console.ReadLine();
+
+                if (name != string.Empty)
+                {
+                    Console.WriteLine($"Please enter the phone number associated with {name}:");
+                    var phoneNumber = int.Parse(Console.ReadLine());
+                    myDict.Add(name, phoneNumber);
+                }
+            }
+            
+            //Part 2 (Searching for Name & Number)
+            var lookUp = "Placeholder";
+            while(lookUp != string.Empty)
+            {
+                Console.WriteLine("Please enter a name you would like to look up:");
+                lookUp = Console.ReadLine();
+            }
         }
     }
 }
+
