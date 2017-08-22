@@ -18,7 +18,7 @@ namespace DictionaryPractice
 
                 if (name != string.Empty)
                 {
-                    Console.WriteLine($"Please enter the phone number associated with {name}:");
+                    Console.WriteLine($"Please Enter the phone number associated with {name}:");
                     var phoneNumber = int.Parse(Console.ReadLine());
                     myDict.Add(name, phoneNumber);
                 }
@@ -28,8 +28,15 @@ namespace DictionaryPractice
             var lookUp = "Placeholder";
             while(lookUp != string.Empty)
             {
-                Console.WriteLine("Please enter a name you would like to look up:");
+                Console.WriteLine("Please Enter a name you would like to look up:");
                 lookUp = Console.ReadLine();
+                foreach (var item in myDict)
+                {
+                    if(item.Key == lookUp)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                }  
             }
         }
     }
