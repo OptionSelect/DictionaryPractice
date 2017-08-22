@@ -31,11 +31,16 @@ namespace DictionaryPractice
             {
                 Console.WriteLine("Please Enter a name you would like to look up:");
                 lookUp = Console.ReadLine();
-                foreach (var item in myDict)
+                var phoneNumbah = 0;
+                if(myDict.TryGetValue(lookUp, out phoneNumbah))
                 {
-                    if (item.Key == lookUp)
+                    Console.WriteLine($"{phoneNumbah}");
+                } else if(lookUp != string.Empty)
+                {
+                    Console.WriteLine($"Did you mean: ");
+                    foreach (var item in myDict)
                     {
-                        Console.WriteLine(item.Value);
+                        Console.WriteLine($"{item.Key}");
                     }
                 }
             }
@@ -43,13 +48,13 @@ namespace DictionaryPractice
             Console.WriteLine(letterCount(s)['b'] == 4);
             Console.WriteLine(letterCount(s).ContainsKey('z') == false);
             Console.WriteLine(letterCount(s).ContainsKey(' ') == false);
-            
+
         }
         //Part 3 (LetterCount Function) 
         public static Dictionary<char, int> letterCount(string s)
         {
             var lowCase = Regex.Replace(s, @"\s+", "");
-            
+
             lowCase.ToLower().ToCharArray();
             var charDictionary = new Dictionary<char, int>();
             foreach (var item in lowCase)
@@ -62,7 +67,7 @@ namespace DictionaryPractice
             }
             foreach (var item in charDictionary)
             {
-                Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");                
+                Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
             }
             return charDictionary;
         }
